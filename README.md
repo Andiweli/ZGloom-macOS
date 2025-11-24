@@ -1,4 +1,4 @@
-# ZGloom-macOS – Amiga Gloom port for macOS
+# ZGloom-macOS<br/>Amiga Gloom port for macOS
 
 ZGloom-macOS is a modern **macOS source port** of the Amiga FPS **Gloom**, based on the updated ZGloom Windows fork.  
 It runs the original Gloom engine on macOS using **SDL2** and **LibXMP**, with renderer fixes, widescreen support and multi-game launching.
