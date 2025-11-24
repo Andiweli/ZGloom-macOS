@@ -23,6 +23,14 @@ The goal is to provide a faithful but slightly modernised Gloom experience on cu
 
 ---
 
+## 🎞️ Preview of current Game status
+
+https://github.com/user-attachments/assets/7e1427e0-9a1e-416a-b115-55faf4cbe8fa
+
+<img width="1280" height="1440" alt="image" src="https://github.com/user-attachments/assets/4a94d176-bc84-4a8f-9b77-20d3c2b51e43" />
+
+---
+
 ## 📦 Download & Setup
 
 1. Download the latest macOS build from the **Releases** section of this repository.  
