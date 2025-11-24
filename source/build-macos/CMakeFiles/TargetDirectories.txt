@@ -1,0 +1,3 @@
+/Users/andiweli/Projects/ZGloom/build-macos/CMakeFiles/zgloom.dir
+/Users/andiweli/Projects/ZGloom/build-macos/CMakeFiles/edit_cache.dir
+/Users/andiweli/Projects/ZGloom/build-macos/CMakeFiles/rebuild_cache.dir

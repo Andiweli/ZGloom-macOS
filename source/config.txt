@@ -1,0 +1,63 @@
+;ZGloom Configuration
+
+;SDL keyvals, up/down/left/right/strafeleft/straferight/strafemod/run/shoot
+keys 82 81 80 79 4 7 226 225 224
+
+;The size of the game render bitmap. Bumping this up may lead to more overflow issues in the renderer. But you can get, say, 16:9 by using 460x256 or something in a larger window
+rendersize 320 256
+
+;The size of the actual window/fullscreen res. Guess this should be a multiple of the above for pixel perfect
+windowsize 960 768
+
+;VSYNC on or off?
+vsync 0
+
+;Focal length. Original used 128 for a 320x256 display, bump this up for higher resolution. Rule of thumb: for 90degree fov, = renderwidth/2
+focallength 128
+
+;rapidfire?
+autofire 0
+
+;Mouse sensitivity
+mousesensitivity 5
+
+;Audio volumes
+sfxvol 5
+musvol 5
+ambiencevol 0
+
+;Fullscreen on or off?
+fullscreen 0
+
+;Multithreaded renderer (somewhat experimental)
+multithread 0
+
+;Size of blood splatters in pixels
+bloodsize 2
+
+;Muzzle Flash and Weapon/Upgrade reflections
+muzzleflash 1
+
+;blob shadows enabled?
+blobshadows 1
+
+;Display Effects
+vignette 0
+strength 0
+radius 0
+softness 0
+warmth 0
+filmgrain 0
+grainintensity 1
+scanlines 0
+linesintensity 1
+VIGNETTE=0
+V_STRENGTH=0
+V_RADIUS=0
+V_SOFTNESS=0
+V_WARMTH=0
+GRAIN=0
+GRAIN_I=1
+SCAN=0
+SCAN_I=1
+MUZZLE=1
