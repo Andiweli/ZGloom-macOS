@@ -12,11 +12,8 @@ The goal is to provide a faithful but slightly modernised Gloom experience on cu
 - **Native macOS port of the Amiga Gloom engine**  
   Runs the original Gloom data files on macOS using a C++ core with SDL2.
 
-- **Supports original games and selected mods**  
-  Works with the main Gloom titles and compatible mods such as **“Death Mask”** and **“8bit Killer”** (as long as they follow the original engine layout).
-
 - **Built-in multi-game launcher**  
-  When more than one game is installed, a simple launcher lets you choose between **Gloom**, **Gloom Deluxe**, **Gloom 3**, **Zombie Massacre** or supported mods at startup.
+  A simple launcher lets you choose between **Gloom**, **Gloom Deluxe**, **Gloom 3** and **Zombie Massacre** at startup.
 
 - **4:3 and 16:9 display modes with FOV control**  
   Switch between classic 4:3 and a widescreen 16:9 mode and adjust the **field of view** to suit your monitor and taste.
@@ -24,25 +21,13 @@ The goal is to provide a faithful but slightly modernised Gloom experience on cu
 - **Improved software renderer with lighting effects**  
   Uses the fixed ZGloom renderer with cleaner perspective plus dynamic **muzzle flash brightening** and colored floor reflections under projectiles and weapon upgrade orbs.
 
-- **In-game MOD music via LibXMP**  
-  Drop tracker modules into the game data and use script `song_` commands for **per-level music**, similar to the original Amiga release.
-
 ---
 
 ## 📦 Download & Setup
 
 1. Download the latest macOS build from the **Releases** section of this repository.  
 2. Extract the app bundle or archive to a folder of your choice.  
-3. Copy your original Gloom game data into the same directory as the executable (or into the configured data subfolders, as described in the release notes).  
-4. Start the app; if multiple games/mods are present, choose one from the launcher and play.
-
-You will need data from at least one of:
-
-- **Gloom**
-- **Gloom Deluxe / Ultimate Gloom**
-- **Gloom 3**
-- **Zombie Massacre**
-- compatible mods (e.g. **Death Mask**, **8bit Killer**)
+4. Start the app and choose one from the launcher and play.
 
 ---
 
@@ -66,7 +51,6 @@ ZGloom-macOS is a sibling of the Windows ZGloom fork, sharing:
 - the **fixed renderer**  
 - **multi-game support**  
 - **widescreen / FOV options**  
-- and **LibXMP-based music playback**
 
 If you enjoy playing classic Amiga shooters on macOS, consider starring the repository so other retro and Gloom fans can discover it.
 
