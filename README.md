@@ -1,7 +1,12 @@
-# ZGloom-macOS<br/>Amiga Gloom port for macOS
+# ZGloom-macOS – Amiga Gloom port for macOS
 
-> ZGloom-macOS is a modern **macOS source port** of the Amiga FPS **Gloom**, based on the updated ZGloom Windows fork. It runs the original Gloom engine on macOS using **SDL2** and **LibXMP**, with renderer fixes, widescreen support and multi-game launching.  
-> The goal is to provide a faithful but slightly modernised Gloom experience on current Macs.
+> Native macOS port of the modern ZGloom engine, bringing the classic Amiga FPS **Gloom** (plus Gloom Deluxe, Gloom 3 and Zombie Massacre) to Intel and Apple Silicon Macs.
+
+[![Latest release](https://img.shields.io/github/v/release/Andiweli/ZGloom-macOS?label=latest%20macOS%20release)](https://github.com/Andiweli/ZGloom-macOS/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-macOS-lightgrey.svg)](https://github.com/Andiweli/ZGloom-macOS)
+[![Engine](https://img.shields.io/badge/engine-SDL2%20%2B%20LibXMP-brightgreen.svg)](https://github.com/Andiweli/ZGloom-macOS)
+
+ZGloom-macOS is a macOS port of the updated [ZGloomX86 Windows fork](https://github.com/Andiweli/ZGloomX86), adapted to run on macOS using **SDL2**, **SDL2_mixer** and **LibXMP**. It aims to stay faithful to the original Amiga Gloom engine while adding a fixed renderer, widescreen/FOV options and multi-game support for **Gloom**, **Gloom Deluxe**, **Gloom 3**, **Zombie Massacre** and selected mods.
 
 ---
 
