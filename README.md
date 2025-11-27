@@ -1,9 +1,12 @@
-# ZGloom-macOS<br/>Amiga Gloom port for macOS
+# ZGloom-macOS – Amiga Gloom port for macOS
 
-ZGloom-macOS is a modern **macOS source port** of the Amiga FPS **Gloom**, based on the updated ZGloom Windows fork.  
-It runs the original Gloom engine on macOS using **SDL2** and **LibXMP**, with renderer fixes, widescreen support and multi-game launching.
+> Native macOS port of the modern ZGloom engine, bringing the classic Amiga FPS **Gloom** (plus Gloom Deluxe, Gloom 3 and Zombie Massacre) to Intel and Apple Silicon Macs.
 
-The goal is to provide a faithful but slightly modernised Gloom experience on current Macs.
+[![Latest release](https://img.shields.io/github/v/release/Andiweli/ZGloom-macOS?label=latest%20macOS%20release)](https://github.com/Andiweli/ZGloom-macOS/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-macOS-lightgrey.svg)](https://github.com/Andiweli/ZGloom-macOS)
+[![Engine](https://img.shields.io/badge/engine-SDL2%20%2B%20LibXMP-brightgreen.svg)](https://github.com/Andiweli/ZGloom-macOS)
+
+ZGloom-macOS is a macOS port of the updated [ZGloomX86 Windows fork](https://github.com/Andiweli/ZGloomX86), adapted to run on macOS using **SDL2**, **SDL2_mixer** and **LibXMP**. It aims to stay faithful to the original Amiga Gloom engine while adding a fixed renderer, widescreen/FOV options and multi-game support for **Gloom**, **Gloom Deluxe**, **Gloom 3**, **Zombie Massacre** and selected mods.
 
 ---
 
@@ -33,22 +36,49 @@ https://github.com/user-attachments/assets/7e1427e0-9a1e-416a-b115-55faf4cbe8fa
 
 ## 📦 Download & Setup
 
-1. Download the latest macOS build from the **Releases** section of this repository.  
+1. Download the latest macOS build from the [**Releases**](https://github.com/Andiweli/ZGloom-macOS/releases) section of this repository.  
 2. Extract the app bundle or archive to a folder of your choice.  
-4. Start the app and choose one from the launcher and play.
+4. Start the app and choose a game from the launcher and play.
 
 ---
 
 ## 🛠 Building from Source (short version)
 
-ZGloom-macOS is intended to be built with **CMake**, **SDL2**, **SDL2_mixer** and **LibXMP** on macOS:
+ZGloom-macOS is intended to be built with **CMake**, **SDL2**, **SDL2_mixer** and **LibXMP** on macOS.  
+This build was built using Xcode on macOS 26.
 
-- Install dependencies (for example via **Homebrew**: `brew install cmake sdl2 sdl2_mixer libxmp`).
-- Clone this repository.
-- Generate a build directory and run CMake for your preferred generator (Xcode or Ninja).
-- Build the project and place your Gloom data next to the resulting binary.
+- Install Xcode from the Apple AppStore
+- Open Terminal and enter ``xcode-select --install``
+- Install Homebrew as described [here](https://brew.sh/)
+- Open Terminal again and enter
+  ```
+  brew install cmake ninja
+  brew install sdl2 sdl2_mixer libxmp
+  ```
+-  Change to you project directory (e.g. ~/Projects/ZGloom)
 
-More detailed build instructions (including Universal Binary notes for Intel + Apple Silicon) will be added as the macOS port matures.
+### Now you can either use CMAKE
+```
+mkdir build-macos
+cd build-macos
+
+cmake .. \
+  -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+```
+And wenn this works compile with ``cmake --build . --config Release``
+
+### Or you can use Xcode
+```
+mkdir build-xcode
+cd build-xcode
+
+cmake .. \
+  -G Xcode \
+  -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+```
+And then open the project file in Xcode or compile in Terminal using ``xcodebuild -project ZGloom.xcodeproj -configuration Release``
 
 ---
 
