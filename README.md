@@ -5,7 +5,7 @@ Native macOS port of the modern **ZGloom** engine, bringing the classic Amiga FP
 > Play Gloom, Gloom Deluxe, Gloom 3 and Zombie Massacre on macOS with a fixed renderer, widescreen support, post-processing overlays and save/load position – while staying faithful to the original Amiga gameplay.
 
 [![Latest release](https://img.shields.io/github/v/release/Andiweli/ZGloom-macOS?label=latest%20macOS%20release)](https://github.com/Andiweli/ZGloom-macOS/releases/latest)
-[![Platform](https://img.shields.io/badge/platform-macOS-lightgrey.svg)](https://github.com/Andiweli/ZGloom-macOS)
+[![Platform](https://img.shields.io/badge/platform-macOS%20(Universal)-lightgrey.svg)](https://github.com/Andiweli/ZGloom-macOS)
 [![Engine](https://img.shields.io/badge/engine-SDL2%20%2B%20LibXMP-brightgreen.svg)](https://github.com/Andiweli/ZGloom-macOS)
 
 ZGloom-macOS is the macOS sibling of the Windows ZGloom fork, adapted to SDL2 / LibXMP and CMake/Xcode toolchains while keeping the same renderer, feature set and multi-game support.
@@ -117,7 +117,7 @@ ZGloom-macOS is a sibling of the Windows ZGloom fork, sharing:
 - **widescreen / FOV options**
 - background ambience credit goes to Prophet
 
-If you enjoy playing classic Amiga shooters on macOS, consider starring the repository so other retro and Gloom fans can discover it.
+**Keywords / Topics:**  
+_amiga • gloom • vita • psvita • windows • x86 • android • macos • homebrew • zgloom • gloomdeluxe • zombiemassacre • sdl • libxmp • vita2d • ps tv shooter_
 
-**Keywords / topics:**  
-_amiga • gloom • macos • mac • source port • zgloom • gloom deluxe • zombie massacre • death mask • 8bit killer_
+If you enjoy it, feel free to ⭐ star the repo so other PS Vita & Amiga fans can find it more easily.
