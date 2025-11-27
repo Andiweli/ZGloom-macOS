@@ -89,4 +89,7 @@ namespace Config
 
 	void Init();
 	void Save();
+
+	void SetDataRoot(const std::string& root);
+	const std::string& GetDataRoot();
 };

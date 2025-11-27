@@ -1,4 +1,5 @@
 #include "gloommap.h"
+#include "EventReplay.h"
 #include "gloommaths.h"
 #include "monsterlogic.h"
 #include "soundhandler.h"
@@ -543,6 +544,8 @@ void GloomMap::DumpDebug()
 
 void GloomMap::ExecuteEvent(uint32_t e, bool& gotele, Teleport& teleout)
 {
+	// Record event for replay after load
+	EventReplay::Record(e);
 	// add objects?
 	
 	// DEMOS events seem off by one? 

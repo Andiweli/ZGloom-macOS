@@ -6,7 +6,9 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/andiweli/Projects/ZGlo
 set(OLD_GLOB
   "/Users/andiweli/Projects/ZGloom/ConfigAmbienceImpl.cpp"
   "/Users/andiweli/Projects/ZGloom/ConfigOverlays.cpp"
+  "/Users/andiweli/Projects/ZGloom/EventReplay.cpp"
   "/Users/andiweli/Projects/ZGloom/MenuAdapters.cpp"
+  "/Users/andiweli/Projects/ZGloom/SaveSystem.cpp"
   "/Users/andiweli/Projects/ZGloom/audio/AtmosphereVolume.cpp"
   "/Users/andiweli/Projects/ZGloom/audio/EmbeddedBGM.cpp"
   "/Users/andiweli/Projects/ZGloom/binresource.cpp"

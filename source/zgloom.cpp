@@ -25,6 +25,8 @@ static xmp_context g_xmp = nullptr;
 #include "titlescreen.h"
 #include "menuscreen.h"
 #include "hud.h"
+#include "SaveSystem.h"
+#include "EventReplay.h"
 #include "effects/MuzzleFlashFX.h"
 #include "assets/launcher_bg_embed.h"
 #include <vector>
@@ -194,6 +196,10 @@ enum GameState
 	STATE_MENU,
 	STATE_TITLE
 };
+
+bool g_RequestSavePosition  = false;
+bool g_RequestTitleContinue = false;
+
 
 
 
@@ -375,41 +381,6 @@ static void GL_TryAddInstall(const std::string& baseDir, std::vector<GameInstall
     out.push_back(gi);
 }
 
-static int GL_LabelPriority(const std::string& label)
-{
-    std::string lower = GL_ToLower(label);
-
-    if (lower == "gloom")            return 0;
-    if (lower == "gloom deluxe")     return 1;
-    if (lower == "gloom 3")          return 2;
-    if (lower == "zombie massacre")  return 3;
-
-    // Andere Titel (Mods etc.) kommen danach, alphabetisch sortiert
-    return 100;
-}
-
-static void GL_SortInstalls(std::vector<GameInstall>& installs)
-{
-    std::stable_sort(installs.begin(), installs.end(),
-        [](const GameInstall& a, const GameInstall& b)
-        {
-            int pa = GL_LabelPriority(a.label);
-            int pb = GL_LabelPriority(b.label);
-
-            if (pa != pb)
-                return pa < pb;
-
-            // Gleiche Priorität: Label case-insensitive alphabetisch
-            std::string la = GL_ToLower(a.label);
-            std::string lb = GL_ToLower(b.label);
-            if (la != lb)
-                return la < lb;
-
-            // Tie-Breaker: baseDir case-insensitive
-            return GL_ToLower(a.baseDir) < GL_ToLower(b.baseDir);
-        });
-}
-
 static void GL_DiscoverGameInstalls(std::vector<GameInstall>& out)
 {
     out.clear();
@@ -460,16 +431,6 @@ static void GL_DiscoverGameInstalls(std::vector<GameInstall>& out)
         closedir(dir);
     }
 #endif
-    
-    // Wunsch-Reihenfolge:
-    // 1) Gloom
-    // 2) Gloom Deluxe
-    // 3) Gloom 3
-    // 4) Zombie Massacre
-    // 5) Rest alphabetisch
-    if (!out.empty())
-        GL_SortInstalls(out);
-
 }
 
 // ------------------------- Minimal 8x8 bitmap font ----------------------------
@@ -780,7 +741,7 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    // Ensure working directory is the executable (or app bundle resources) directory
+// Ensure working directory is the executable (or app bundle resources) directory
     {
         char* base = SDL_GetBasePath();
         if (base)
@@ -813,7 +774,7 @@ int main(int argc, char* argv[])
     }
 
     
-    // Discover compatible game installs (current dir + subdirs)
+        // Discover compatible game installs (current dir + subdirs)
     std::vector<GameInstall> installs;
     GL_DiscoverGameInstalls(installs);
 
@@ -1061,11 +1022,13 @@ int main(int argc, char* argv[])
 					break;
 				}
 				case Script::SOP_LOADFLAT:
-				{
-					//improve this, only supports 9 flats
-					gmap.SetFlat(scriptstring[0] - '0');
-					break;
-				}
+                {
+                    //improve this, only supports 9 flats
+                    int flat = scriptstring[0] - '0';
+                    gmap.SetFlat(flat);
+                    SaveSystem::SetCurrentFlat(flat);
+                    break;
+                }
 				case Script::SOP_TEXT:
 				{
 					 intermissiontext = scriptstring;
@@ -1132,37 +1095,98 @@ int main(int argc, char* argv[])
 				}
 				case Script::SOP_PLAY:
 				{
-					if (state == STATE_PARSING)
-					{
 
-						cam.x.SetInt(0);
-						cam.y = 120;
-						cam.z.SetInt(0);
-						cam.rotquick.SetInt(0);
-						scriptstring.insert(0, Config::GetLevelDir());
-						gmap.Load(scriptstring.c_str(), &objgraphics);
-						//gmap.Load("maps/map1_4", &objgraphics);
-						renderer.Init(render32, &gmap, &objgraphics);
-						logic.InitLevel(&gmap, &cam, &objgraphics);
-						state = STATE_PLAYING;
-						BGM::PlayLooping();
-						BGM::SetVolume9(AtmosphereVolume::Get());
+if (state == STATE_PARSING)
+{
+    // Determine which level to load: script default or saved position
+    std::string levelRel = scriptstring;
+    SaveSystem::SaveData s;
+    bool haveSavePos = false;
+    bool haveReplay  = false;
 
-						if (haveingamemusic)
-						{
-							if (xmp_load_module_from_memory(g_xmp, ingamemusic.data, ingamemusic.size))
-							{
-								std::cout << "music error";
-							}
+    // For each new PLAY operation we start from a clean event history
+    EventReplay::Clear();
 
-							if (xmp_start_player(g_xmp, 22050, 0))
-							{
-								std::cout << "music error";
-							}
-							Mix_HookMusic(fill_audio, g_xmp);
-							Config::SetMusicVol(Config::GetMusicVol());
-						}
-					}
+    if (g_RequestTitleContinue)
+    {
+        g_RequestTitleContinue = false;
+        if (SaveSystem::LoadFromDisk(s))
+        {
+            levelRel    = s.levelPath;
+            haveSavePos = true;
+            SaveSystem::SetCurrentFlat(s.flatIndex);
+            script.SeekAfterPlayFor(levelRel);
+
+            // EventReplay: load stored event history for this save
+            if (EventReplay::LoadFromDisk())
+                haveReplay = true;
+        }
+    }
+
+    // Remember level path (relative) for save/resume
+    SaveSystem::SetCurrentLevelPath(levelRel);
+
+    // Default camera for new game; may be overridden by saved data
+    cam.x.SetInt(0);
+    cam.y = 120;
+    cam.z.SetInt(0);
+    cam.rotquick.SetInt(0);
+
+    // Build full path and load requested level
+    std::string levelFull = levelRel;
+    levelFull.insert(0, Config::GetLevelDir());
+    gmap.Load(levelFull.c_str(), &objgraphics);
+    //gmap.Load("maps/map1_4", &objgraphics);
+    renderer.Init(render32, &gmap, &objgraphics);
+    logic.InitLevel(&gmap, &cam, &objgraphics);
+
+    // EventReplay: after the map is fully initialised, restore button/door state
+    if (haveReplay)
+    {
+        EventReplay::ReplayAll(gmap);
+    }
+
+    // If we continue from a save, restore camera and player state
+    if (haveSavePos)
+    {
+        cam.x.SetInt(s.camX);
+        cam.y = s.camY;
+        cam.z.SetInt(s.camZ);
+        cam.rotquick.SetInt(s.camRot);
+
+        // Restore player stats (HP, weapon, reload state)
+        for (auto& o : gmap.GetMapObjects())
+        {
+            if (o.t == ObjectGraphics::OLT_PLAYER1)
+            {
+                o.data.ms.hitpoints = s.hp;
+                o.data.ms.weapon    = s.weapon;
+                o.data.ms.reload    = s.reload;
+                o.data.ms.reloadcnt = s.reloadcnt;
+                break;
+            }
+        }
+    }
+
+    state = STATE_PLAYING;
+    BGM::PlayLooping();
+    BGM::SetVolume9(AtmosphereVolume::Get());
+
+    if (haveingamemusic)
+    {
+        if (xmp_load_module_from_memory(g_xmp, ingamemusic.data, ingamemusic.size))
+        {
+            std::cout << "music error";
+        }
+
+        if (xmp_start_player(g_xmp, 22050, 0))
+        {
+            std::cout << "music error";
+        }
+        Mix_HookMusic(fill_audio, g_xmp);
+        Config::SetMusicVol(Config::GetMusicVol());
+    }
+}
 					break;
 				}
 				case Script::SOP_END:
@@ -1301,7 +1325,36 @@ int main(int argc, char* argv[])
 				}
 				if (state == STATE_MENU)
 				{
-					switch (menuscreen.Update(sEvent))
+					MenuScreen::MenuReturn mr = menuscreen.Update(sEvent);
+
+					// Handle in-game SAVE POSITION request
+					if (g_RequestSavePosition)
+					{
+						g_RequestSavePosition = false;
+
+						SaveSystem::SaveData s;
+						s.levelPath = SaveSystem::GetCurrentLevelPath();
+						s.flatIndex = SaveSystem::GetCurrentFlat();
+
+						s.camX   = cam.x.GetInt();
+						s.camY   = cam.y;
+						s.camZ   = cam.z.GetInt();
+						s.camRot = cam.rotquick.GetInt();
+
+						MapObject player = logic.GetPlayerObj();
+						s.hp        = player.data.ms.hitpoints;
+						s.weapon    = player.data.ms.weapon;
+						s.reload    = player.data.ms.reload;
+						s.reloadcnt = player.data.ms.reloadcnt;
+
+						SaveSystem::SaveToDisk(s);
+						EventReplay::SaveToDisk();
+
+						SDL_Log("ZGloom SaveSystem: SAVE requested (level=%s, flat=%d, weapon=%d, reload=%d)",
+								s.levelPath.c_str(), s.flatIndex, s.weapon, s.reload);
+					}
+
+					switch (mr)
 					{
 						case MenuScreen::MENURET_PLAY:
 							state = STATE_PLAYING;

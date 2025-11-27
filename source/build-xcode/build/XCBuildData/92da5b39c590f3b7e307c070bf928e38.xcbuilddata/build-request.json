@@ -1,16 +1,22 @@
 {
   "buildCommand" : {
-    "command" : "build",
-    "skipDependencies" : false,
-    "style" : "buildOnly"
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : false,
+    "targets" : null
   },
   "configuredTargets" : [
     {
-      "guid" : "d653fcc0c64109f41cb02fa551ebd25a6af68616d69472f5a02bec2cfae35cc6"
+      "guid" : "697b6f69b6d91ed8e848d61156ce364a6af68616d69472f5a02bec2cfae35cc6"
+    },
+    {
+      "guid" : "697b6f69b6d91ed8e848d61156ce364a8eedcce96eb805cabb5c423137284f61"
+    },
+    {
+      "guid" : "697b6f69b6d91ed8e848d61156ce364a0dbd7fca89925826679665eefbf916be"
     }
   ],
-  "containerPath" : "/Users/andiweli/Projects/ZGloom/ZGloom.xcworkspace",
-  "continueBuildingAfterErrors" : false,
+  "containerPath" : "/Users/andiweli/Projects/ZGloom/build-xcode/zgloom.xcodeproj",
+  "continueBuildingAfterErrors" : true,
   "dependencyScope" : "workspace",
   "enableIndexBuildArena" : false,
   "hideShellScriptEnvironment" : false,
@@ -33,9 +39,9 @@
       "buildIntermediatesPath" : "",
       "buildProductsPath" : "",
       "derivedDataPath" : "/Users/andiweli/Library/Developer/Xcode/DerivedData",
-      "indexDataStoreFolderPath" : "/Users/andiweli/Library/Developer/Xcode/DerivedData/ZGloom-eigrsvynyqaqwoafasblpkyxkugf/Index.noindex/DataStore",
+      "indexDataStoreFolderPath" : "/Users/andiweli/Library/Developer/Xcode/DerivedData/zgloom-bunqzykntzuncldgonlccwjkjnxw/Index.noindex/DataStore",
       "indexEnableDataStore" : true,
-      "indexPCHPath" : "/Users/andiweli/Library/Developer/Xcode/DerivedData/ZGloom-eigrsvynyqaqwoafasblpkyxkugf/Index.noindex/PrecompiledHeaders",
+      "indexPCHPath" : "/Users/andiweli/Library/Developer/Xcode/DerivedData/zgloom-bunqzykntzuncldgonlccwjkjnxw/Index.noindex/PrecompiledHeaders",
       "pchPath" : ""
     },
     "configurationName" : "Release",
@@ -43,15 +49,16 @@
       "synthesized" : {
         "table" : {
           "ENABLE_PREVIEWS" : "NO",
-          "ENABLE_XOJIT_PREVIEWS" : "YES",
+          "ENABLE_XOJIT_PREVIEWS" : "NO",
           "ONLY_ACTIVE_ARCH" : "YES"
         }
       }
     }
   },
+  "qos" : "default",
   "schemeCommand" : "launch",
   "showNonLoggedProgress" : true,
-  "useDryRun" : false,
+  "useDryRun" : true,
   "useImplicitDependencies" : true,
   "useLegacyBuildLocations" : false,
   "useParallelTargets" : true

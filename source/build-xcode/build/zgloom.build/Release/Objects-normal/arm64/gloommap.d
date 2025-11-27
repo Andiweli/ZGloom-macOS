@@ -4,6 +4,7 @@ dependencies: /Users/andiweli/Projects/ZGloom/gloommap.cpp \
   /Users/andiweli/Projects/ZGloom/decrunchmania.h \
   /Users/andiweli/Projects/ZGloom/quick.h \
   /Users/andiweli/Projects/ZGloom/objectgraphics.h \
+  /Users/andiweli/Projects/ZGloom/EventReplay.h \
   /Users/andiweli/Projects/ZGloom/gloommaths.h \
   /Users/andiweli/Projects/ZGloom/monsterlogic.h \
   /Users/andiweli/Projects/ZGloom/gamelogic.h \

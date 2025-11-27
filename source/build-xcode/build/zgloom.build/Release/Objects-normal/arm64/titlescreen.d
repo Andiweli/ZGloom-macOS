@@ -47,4 +47,5 @@ dependencies: /Users/andiweli/Projects/ZGloom/titlescreen.cpp \
   /Users/andiweli/Projects/ZGloom/SDL2/SDL_version.h \
   /Users/andiweli/Projects/ZGloom/font.h \
   /Users/andiweli/Projects/ZGloom/crmfile.h \
-  /Users/andiweli/Projects/ZGloom/decrunchmania.h
+  /Users/andiweli/Projects/ZGloom/decrunchmania.h \
+  /Users/andiweli/Projects/ZGloom/SaveSystem.h

@@ -727,4 +727,17 @@ void Save()
 	{
 		focallength = fl;
 	}
+
+	static std::string g_DataRoot;
+
+	void SetDataRoot(const std::string& root)
+	{
+		g_DataRoot = root;
+	}
+
+	const std::string& GetDataRoot()
+	{
+		return g_DataRoot;
+	}
+
 }

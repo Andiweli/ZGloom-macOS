@@ -65,6 +65,8 @@ dependencies: /Users/andiweli/Projects/ZGloom/zgloom.cpp \
   /Users/andiweli/Projects/ZGloom/titlescreen.h \
   /Users/andiweli/Projects/ZGloom/menuscreen.h \
   /Users/andiweli/Projects/ZGloom/hud.h \
+  /Users/andiweli/Projects/ZGloom/SaveSystem.h \
+  /Users/andiweli/Projects/ZGloom/EventReplay.h \
   /Users/andiweli/Projects/ZGloom/effects/MuzzleFlashFX.h \
   /Users/andiweli/Projects/ZGloom/ConfigOverlays.h \
   /Users/andiweli/Projects/ZGloom/assets/launcher_bg_embed.h
