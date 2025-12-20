@@ -91,7 +91,7 @@ cd build-macos
 cmake .. \
   -G Ninja \
   -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+  -DCMAKE_OSX_ARCHITECTURES="arm64"
 ```
 And wenn this works compile with ``cmake --build . --config Release``
 
