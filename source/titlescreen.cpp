@@ -34,7 +34,7 @@ void TitleScreen::Render(SDL_Surface* src, SDL_Surface* dest, Font& font)
 			if (flash || (selection != MAINENTRY_QUIT))   font.PrintMessage("EXIT", 205, dest, 1);
 		}
 
-		font.PrintMessage("ZGLOOM MACOS 11.2025", 243, dest, 1);
+		font.PrintMessage("ZGLOOM MACOS 04.2026", 243, dest, 1);
 	}
 	else if (status == TITLESTATUS_SELECT)
 	{
