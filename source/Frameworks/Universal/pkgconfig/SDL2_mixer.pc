@@ -1,0 +1,11 @@
+prefix=/Users/andreas.stuermer/Documents/Xcode Projekte/ZGloom/Frameworks/Universal
+exec_prefix=${prefix}
+libdir=${prefix}
+includedir=/opt/homebrew/include
+
+Name: SDL2_mixer
+Description: SDL2_mixer universal override for ZGloom
+Version: 2
+Requires: sdl2
+Libs: -L${libdir} -lSDL2_mixer
+Cflags: -I${includedir} -I${includedir}/SDL2 -D_THREAD_SAFE

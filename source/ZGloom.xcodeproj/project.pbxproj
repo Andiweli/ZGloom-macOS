@@ -1,0 +1,645 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		078A087E15D74A3EBCC105F9 /* monsterlogic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B35FFE0954CB4F52924E16AC /* monsterlogic.cpp */; };
+		0EA0CC18D31347A3B8198BBA /* EmbeddedBGM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE0302D24724D3B83609E2B /* EmbeddedBGM.cpp */; };
+		22BB7FD193B44E5D8066FF82 /* VignetteOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BC26EA9A8E4C758A340C1D /* VignetteOverlay.cpp */; };
+		23647DF910A948DDB0A4E292 /* script.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FA144A687584FB38C2C36AC /* script.cpp */; };
+		25C85BCBB3094E6A9E74E05E /* font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA1DFF0388437888D67C28 /* font.cpp */; };
+		2E918C1CAC77490E9F0F6C9C /* FilmGrainOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA085CDFD4437A7A5D5AF /* FilmGrainOverlay.cpp */; };
+		352E7E0AD1684A6CA0A702F0 /* zgloom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EC08F0C7F94DD382623146 /* zgloom.cpp */; };
+		39BE88230E704B83BE92FE5B /* quick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C507574B3A64986A889C4DB /* quick.cpp */; };
+		42769A0A649047A2870981A6 /* objectgraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7776604289D14940BE7581AC /* objectgraphics.cpp */; };
+		454AA8D844C24D348851ADEA /* ScanlineOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0C5BC19802419A9C7FE305 /* ScanlineOverlay.cpp */; };
+		487B24E43643489E971FDD0B /* menuscreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06CB19B2494493D81812B54 /* menuscreen.cpp */; };
+		4F35E83D266D4663B7EE0036 /* SaveSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13312470257C44CBB0F1C7E0 /* SaveSystem.cpp */; };
+		5160DA546F6442069B2ED96C /* soundhandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658C9C73CAF446669837D853 /* soundhandler.cpp */; };
+		5AC40B5FF779403A8B7762E6 /* ConfigAmbienceImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6376259623394B77863E25A9 /* ConfigAmbienceImpl.cpp */; };
+		651797AECBDE46C3BE500F22 /* binresource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 108DC2E46D514CE081261876 /* binresource.cpp */; };
+		6A27DA8EEDA44FF58CEBC101 /* ConfigOverlays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00AD51C21BC64D4DA1201E63 /* ConfigOverlays.cpp */; };
+		6C39C0C5D6D649448C45BEA8 /* AtmosphereVolume.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC5544FCFD0146C9BFFCE10F /* AtmosphereVolume.cpp */; };
+		6DC9ABD049AB49C793E1D05D /* titlescreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE82C979B3742C9952BB729 /* titlescreen.cpp */; };
+		730867DC3A2A4E948D9FC5AC /* MenuAdapters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC858C5A6314C4CAF485AC9 /* MenuAdapters.cpp */; };
+		8082E9EDB71A417186A15537 /* decrunchmania.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D58707EF213C481AACD6D26B /* decrunchmania.cpp */; };
+		9719D6C8F67F4B4BB54DFEEC /* FrameLimiter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E220FCB27E9E494EBDBEEEAC /* FrameLimiter.cpp */; };
+		98181F55329B415EAA6D8C54 /* BlobShadowToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18F3DF3FAAD045E6A5388969 /* BlobShadowToggle.cpp */; };
+		9AE2C76234894DEE80BFDE2E /* hud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4073082C994A4AB68F6BCFB5 /* hud.cpp */; };
+		ACDDF576267640B981988E51 /* Cheats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9783EDD4CF7C4751BC14A935 /* Cheats.cpp */; };
+		B0693FBD69A145328D10A4DD /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74668B6FDE62453DA81CAE6B /* renderer.cpp */; };
+		B3DF9EF0DBD74CF28495B7B9 /* gloommaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15CCD982466E4ACC9113BC54 /* gloommaths.cpp */; };
+		B4D3D4EE2A1B495393515F86 /* EventReplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC598406097345FDAE5E6B2E /* EventReplay.cpp */; };
+		B80E03BD35CB48FC830DA0D1 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C7CDD309874B1399D7EBE3 /* config.cpp */; };
+		BB3EBCA62F8D180A004C1D8D /* Dust_Particles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB3EBCA52F8D180A004C1D8D /* Dust_Particles.cpp */; };
+		BE1EEC8BD59C406A82CFBED5 /* gloommap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7925EA904CDF491883323FCC /* gloommap.cpp */; };
+		CC6F864E1DA74869889F020E /* gamelogic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38D19364F3164C08B3FD6BC4 /* gamelogic.cpp */; };
+		DD02CDA4575A47FD97CFCBBC /* iffhandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29ED620B96B142CCA428F1A7 /* iffhandler.cpp */; };
+		F04B0FE169594CB3A5E4FCE8 /* RendererHooks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5A1FF9A1C4CF794658878 /* RendererHooks.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00AD51C21BC64D4DA1201E63 /* ConfigOverlays.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ConfigOverlays.cpp; path = ZGloomCode/ConfigOverlays.cpp; sourceTree = SOURCE_ROOT; };
+		0C507574B3A64986A889C4DB /* quick.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = quick.cpp; path = ZGloomCode/quick.cpp; sourceTree = SOURCE_ROOT; };
+		108DC2E46D514CE081261876 /* binresource.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = binresource.cpp; path = ZGloomCode/binresource.cpp; sourceTree = SOURCE_ROOT; };
+		13312470257C44CBB0F1C7E0 /* SaveSystem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = SaveSystem.cpp; path = ZGloomCode/SaveSystem.cpp; sourceTree = SOURCE_ROOT; };
+		15CCD982466E4ACC9113BC54 /* gloommaths.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = gloommaths.cpp; path = ZGloomCode/gloommaths.cpp; sourceTree = SOURCE_ROOT; };
+		18F3DF3FAAD045E6A5388969 /* BlobShadowToggle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = BlobShadowToggle.cpp; path = ZGloomCode/effects/BlobShadowToggle.cpp; sourceTree = SOURCE_ROOT; };
+		1F0B833C87A04DC8B024A37A /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		29ED620B96B142CCA428F1A7 /* iffhandler.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = iffhandler.cpp; path = ZGloomCode/iffhandler.cpp; sourceTree = SOURCE_ROOT; };
+		3397DAAA43BA4062AA2F6DAB /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		38D19364F3164C08B3FD6BC4 /* gamelogic.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = gamelogic.cpp; path = ZGloomCode/gamelogic.cpp; sourceTree = SOURCE_ROOT; };
+		4073082C994A4AB68F6BCFB5 /* hud.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = hud.cpp; path = ZGloomCode/hud.cpp; sourceTree = SOURCE_ROOT; };
+		49BC26EA9A8E4C758A340C1D /* VignetteOverlay.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = VignetteOverlay.cpp; path = ZGloomCode/effects/VignetteOverlay.cpp; sourceTree = SOURCE_ROOT; };
+		4FAA1DFF0388437888D67C28 /* font.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = font.cpp; path = ZGloomCode/font.cpp; sourceTree = SOURCE_ROOT; };
+		5FA5A1FF9A1C4CF794658878 /* RendererHooks.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = RendererHooks.cpp; path = ZGloomCode/effects/RendererHooks.cpp; sourceTree = SOURCE_ROOT; };
+		6376259623394B77863E25A9 /* ConfigAmbienceImpl.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ConfigAmbienceImpl.cpp; path = ZGloomCode/ConfigAmbienceImpl.cpp; sourceTree = SOURCE_ROOT; };
+		658C9C73CAF446669837D853 /* soundhandler.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = soundhandler.cpp; path = ZGloomCode/soundhandler.cpp; sourceTree = SOURCE_ROOT; };
+		74668B6FDE62453DA81CAE6B /* renderer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = renderer.cpp; path = ZGloomCode/renderer.cpp; sourceTree = SOURCE_ROOT; };
+		7776604289D14940BE7581AC /* objectgraphics.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = objectgraphics.cpp; path = ZGloomCode/objectgraphics.cpp; sourceTree = SOURCE_ROOT; };
+		7925EA904CDF491883323FCC /* gloommap.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = gloommap.cpp; path = ZGloomCode/gloommap.cpp; sourceTree = SOURCE_ROOT; };
+		8EE82C979B3742C9952BB729 /* titlescreen.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = titlescreen.cpp; path = ZGloomCode/titlescreen.cpp; sourceTree = SOURCE_ROOT; };
+		9783EDD4CF7C4751BC14A935 /* Cheats.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Cheats.cpp; path = ZGloomCode/cheats/Cheats.cpp; sourceTree = SOURCE_ROOT; };
+		9AC858C5A6314C4CAF485AC9 /* MenuAdapters.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MenuAdapters.cpp; path = ZGloomCode/MenuAdapters.cpp; sourceTree = SOURCE_ROOT; };
+		9FA144A687584FB38C2C36AC /* script.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = script.cpp; path = ZGloomCode/script.cpp; sourceTree = SOURCE_ROOT; };
+		AC5544FCFD0146C9BFFCE10F /* AtmosphereVolume.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = AtmosphereVolume.cpp; path = ZGloomCode/audio/AtmosphereVolume.cpp; sourceTree = SOURCE_ROOT; };
+		AC598406097345FDAE5E6B2E /* EventReplay.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = EventReplay.cpp; path = ZGloomCode/EventReplay.cpp; sourceTree = SOURCE_ROOT; };
+		B06CB19B2494493D81812B54 /* menuscreen.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = menuscreen.cpp; path = ZGloomCode/menuscreen.cpp; sourceTree = SOURCE_ROOT; };
+		B35FFE0954CB4F52924E16AC /* monsterlogic.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = monsterlogic.cpp; path = ZGloomCode/monsterlogic.cpp; sourceTree = SOURCE_ROOT; };
+		B5C7CDD309874B1399D7EBE3 /* config.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = config.cpp; path = ZGloomCode/config.cpp; sourceTree = SOURCE_ROOT; };
+		B5EC08F0C7F94DD382623146 /* zgloom.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = zgloom.cpp; path = ZGloomCode/zgloom.cpp; sourceTree = SOURCE_ROOT; };
+		BB3EBCA52F8D180A004C1D8D /* Dust_Particles.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Dust_Particles.cpp; path = ZGloomCode/effects/Dust_Particles.cpp; sourceTree = "<group>"; };
+		D58707EF213C481AACD6D26B /* decrunchmania.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = decrunchmania.cpp; path = ZGloomCode/decrunchmania.cpp; sourceTree = SOURCE_ROOT; };
+		E220FCB27E9E494EBDBEEEAC /* FrameLimiter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = FrameLimiter.cpp; path = ZGloomCode/effects/FrameLimiter.cpp; sourceTree = SOURCE_ROOT; };
+		EAE0302D24724D3B83609E2B /* EmbeddedBGM.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = EmbeddedBGM.cpp; path = ZGloomCode/audio/EmbeddedBGM.cpp; sourceTree = SOURCE_ROOT; };
+		F3EEA085CDFD4437A7A5D5AF /* FilmGrainOverlay.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = FilmGrainOverlay.cpp; path = ZGloomCode/effects/FilmGrainOverlay.cpp; sourceTree = SOURCE_ROOT; };
+		FA0C5BC19802419A9C7FE305 /* ScanlineOverlay.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ScanlineOverlay.cpp; path = ZGloomCode/effects/ScanlineOverlay.cpp; sourceTree = SOURCE_ROOT; };
+		FC42017756C54FD8BD8909C6 /* zgloom */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = zgloom; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		848158B821D74D2DBCC77151 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		238ED49A4E0D434589F46174 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		70176712F4154DE68BDD3C9F = {
+			isa = PBXGroup;
+			children = (
+				A7DD2A3D270048C89678D4F5 /* Source Files */,
+				3397DAAA43BA4062AA2F6DAB /* CMakeLists.txt */,
+				BECFCBD5D841411C95C919F0 /* ALL_BUILD */,
+				D57C590A94484023AFE46D86 /* Products */,
+				238ED49A4E0D434589F46174 /* Frameworks */,
+				ADEFA351443A4CB3AE05FD55 /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		712BB38A07294E4FBD2643E5 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		A7DD2A3D270048C89678D4F5 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				6376259623394B77863E25A9 /* ConfigAmbienceImpl.cpp */,
+				BB3EBCA52F8D180A004C1D8D /* Dust_Particles.cpp */,
+				00AD51C21BC64D4DA1201E63 /* ConfigOverlays.cpp */,
+				AC598406097345FDAE5E6B2E /* EventReplay.cpp */,
+				9AC858C5A6314C4CAF485AC9 /* MenuAdapters.cpp */,
+				13312470257C44CBB0F1C7E0 /* SaveSystem.cpp */,
+				AC5544FCFD0146C9BFFCE10F /* AtmosphereVolume.cpp */,
+				EAE0302D24724D3B83609E2B /* EmbeddedBGM.cpp */,
+				108DC2E46D514CE081261876 /* binresource.cpp */,
+				9783EDD4CF7C4751BC14A935 /* Cheats.cpp */,
+				B5C7CDD309874B1399D7EBE3 /* config.cpp */,
+				D58707EF213C481AACD6D26B /* decrunchmania.cpp */,
+				18F3DF3FAAD045E6A5388969 /* BlobShadowToggle.cpp */,
+				F3EEA085CDFD4437A7A5D5AF /* FilmGrainOverlay.cpp */,
+				E220FCB27E9E494EBDBEEEAC /* FrameLimiter.cpp */,
+				5FA5A1FF9A1C4CF794658878 /* RendererHooks.cpp */,
+				FA0C5BC19802419A9C7FE305 /* ScanlineOverlay.cpp */,
+				49BC26EA9A8E4C758A340C1D /* VignetteOverlay.cpp */,
+				4FAA1DFF0388437888D67C28 /* font.cpp */,
+				38D19364F3164C08B3FD6BC4 /* gamelogic.cpp */,
+				7925EA904CDF491883323FCC /* gloommap.cpp */,
+				15CCD982466E4ACC9113BC54 /* gloommaths.cpp */,
+				4073082C994A4AB68F6BCFB5 /* hud.cpp */,
+				29ED620B96B142CCA428F1A7 /* iffhandler.cpp */,
+				B06CB19B2494493D81812B54 /* menuscreen.cpp */,
+				B35FFE0954CB4F52924E16AC /* monsterlogic.cpp */,
+				7776604289D14940BE7581AC /* objectgraphics.cpp */,
+				0C507574B3A64986A889C4DB /* quick.cpp */,
+				74668B6FDE62453DA81CAE6B /* renderer.cpp */,
+				9FA144A687584FB38C2C36AC /* script.cpp */,
+				658C9C73CAF446669837D853 /* soundhandler.cpp */,
+				8EE82C979B3742C9952BB729 /* titlescreen.cpp */,
+				B5EC08F0C7F94DD382623146 /* zgloom.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		ADEFA351443A4CB3AE05FD55 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BECFCBD5D841411C95C919F0 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				712BB38A07294E4FBD2643E5 /* CMake Rules */,
+				1F0B833C87A04DC8B024A37A /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		D57C590A94484023AFE46D86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC42017756C54FD8BD8909C6 /* zgloom */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D044114C40C818466978EAA /* ZGloom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C60728F7A1846B69BE46812 /* Build configuration list for PBXNativeTarget "ZGloom" */;
+			buildPhases = (
+				02D9CCB8EA464047963E90A2 /* Sources */,
+				848158B821D74D2DBCC77151 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZGloom;
+			productName = zgloom;
+			productReference = FC42017756C54FD8BD8909C6 /* zgloom */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E6BD786772034C56B4817026 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 2610;
+				TargetAttributes = {
+					8D044114C40C818466978EAA = {
+						DevelopmentTeam = 8HE478U8WB;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8162FE5EF1394B718FB3144E /* Build configuration list for PBXProject "ZGloom" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 70176712F4154DE68BDD3C9F;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D044114C40C818466978EAA /* ZGloom */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		02D9CCB8EA464047963E90A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AC40B5FF779403A8B7762E6 /* ConfigAmbienceImpl.cpp in Sources */,
+				6A27DA8EEDA44FF58CEBC101 /* ConfigOverlays.cpp in Sources */,
+				B4D3D4EE2A1B495393515F86 /* EventReplay.cpp in Sources */,
+				730867DC3A2A4E948D9FC5AC /* MenuAdapters.cpp in Sources */,
+				4F35E83D266D4663B7EE0036 /* SaveSystem.cpp in Sources */,
+				6C39C0C5D6D649448C45BEA8 /* AtmosphereVolume.cpp in Sources */,
+				0EA0CC18D31347A3B8198BBA /* EmbeddedBGM.cpp in Sources */,
+				651797AECBDE46C3BE500F22 /* binresource.cpp in Sources */,
+				BB3EBCA62F8D180A004C1D8D /* Dust_Particles.cpp in Sources */,
+				ACDDF576267640B981988E51 /* Cheats.cpp in Sources */,
+				B80E03BD35CB48FC830DA0D1 /* config.cpp in Sources */,
+				8082E9EDB71A417186A15537 /* decrunchmania.cpp in Sources */,
+				98181F55329B415EAA6D8C54 /* BlobShadowToggle.cpp in Sources */,
+				2E918C1CAC77490E9F0F6C9C /* FilmGrainOverlay.cpp in Sources */,
+				9719D6C8F67F4B4BB54DFEEC /* FrameLimiter.cpp in Sources */,
+				F04B0FE169594CB3A5E4FCE8 /* RendererHooks.cpp in Sources */,
+				454AA8D844C24D348851ADEA /* ScanlineOverlay.cpp in Sources */,
+				22BB7FD193B44E5D8066FF82 /* VignetteOverlay.cpp in Sources */,
+				25C85BCBB3094E6A9E74E05E /* font.cpp in Sources */,
+				CC6F864E1DA74869889F020E /* gamelogic.cpp in Sources */,
+				BE1EEC8BD59C406A82CFBED5 /* gloommap.cpp in Sources */,
+				B3DF9EF0DBD74CF28495B7B9 /* gloommaths.cpp in Sources */,
+				9AE2C76234894DEE80BFDE2E /* hud.cpp in Sources */,
+				DD02CDA4575A47FD97CFCBBC /* iffhandler.cpp in Sources */,
+				487B24E43643489E971FDD0B /* menuscreen.cpp in Sources */,
+				078A087E15D74A3EBCC105F9 /* monsterlogic.cpp in Sources */,
+				42769A0A649047A2870981A6 /* objectgraphics.cpp in Sources */,
+				39BE88230E704B83BE92FE5B /* quick.cpp in Sources */,
+				B0693FBD69A145328D10A4DD /* renderer.cpp in Sources */,
+				23647DF910A948DDB0A4E292 /* script.cpp in Sources */,
+				5160DA546F6442069B2ED96C /* soundhandler.cpp in Sources */,
+				6DC9ABD049AB49C793E1D05D /* titlescreen.cpp in Sources */,
+				352E7E0AD1684A6CA0A702F0 /* zgloom.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		29C8029D0DB4447890732FCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					x86_64,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/build-xcode/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				DEVELOPMENT_TEAM = 8HE478U8WB;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/ZGloomCode",
+					"$(SRCROOT)/ZGloomCode/xmp/include",
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_NO_PIE = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks/Universal",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks/Universal",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"'-std=c++14'",
+					"-fPIE",
+					"-Wall",
+					"-Wextra",
+					"-Wpedantic",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lSDL2",
+					"-lSDL2_mixer",
+					"-lxmp",
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ast.gloomcollection;
+				PRODUCT_NAME = zgloom;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = "/opt/homebrew/include/SDL2 /usr/local/include/SDL2 $(inherited)";
+				TARGET_TEMP_DIR = "$(SRCROOT)/build-xcode/build/zgloom.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		338F7521D89E4829AF4B7D2C /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					x86_64,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/build-xcode/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				DEVELOPMENT_TEAM = 8HE478U8WB;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/ZGloomCode",
+					"$(SRCROOT)/ZGloomCode/xmp/include",
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_NO_PIE = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks/Universal",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks/Universal",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=c++14'",
+					"-fPIE",
+					"-Wall",
+					"-Wextra",
+					"-Wpedantic",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lSDL2",
+					"-lSDL2_mixer",
+					"-lxmp",
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ast.gloomcollection;
+				PRODUCT_NAME = zgloom;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = "/opt/homebrew/include/SDL2 /usr/local/include/SDL2 $(inherited)";
+				TARGET_TEMP_DIR = "$(SRCROOT)/build-xcode/build/zgloom.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		412CEF4502734D9ABEA2A915 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					x86_64,
+					arm64,
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = "";
+				SYMROOT = "$(SRCROOT)/build-xcode/build";
+			};
+			name = Debug;
+		};
+		49685526D1444A7C9B86CA15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					x86_64,
+					arm64,
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = "$(SRCROOT)/build-xcode/build";
+			};
+			name = Release;
+		};
+		7D00DB6ED9A74A7DAB292DC3 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					x86_64,
+					arm64,
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = "$(SRCROOT)/build-xcode/build";
+			};
+			name = RelWithDebInfo;
+		};
+		92C52E8A6F05420989DF3A83 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					x86_64,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/build-xcode/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				DEVELOPMENT_TEAM = 8HE478U8WB;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/ZGloomCode",
+					"$(SRCROOT)/ZGloomCode/xmp/include",
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_NO_PIE = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks/Universal",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks/Universal",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=c++14'",
+					"-fPIE",
+					"-Wall",
+					"-Wextra",
+					"-Wpedantic",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lSDL2",
+					"-lSDL2_mixer",
+					"-lxmp",
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ast.gloomcollection;
+				PRODUCT_NAME = zgloom;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = "/opt/homebrew/include/SDL2 /usr/local/include/SDL2 $(inherited)";
+				TARGET_TEMP_DIR = "$(SRCROOT)/build-xcode/build/zgloom.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		C3A1BA020A0346A9B9977E4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					x86_64,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/build-xcode/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				DEVELOPMENT_TEAM = 8HE478U8WB;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/ZGloomCode",
+					"$(SRCROOT)/ZGloomCode/xmp/include",
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_NO_PIE = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks/Universal",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks/Universal",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=c++14'",
+					"-fPIE",
+					"-Wall",
+					"-Wextra",
+					"-Wpedantic",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lSDL2",
+					"-lSDL2_mixer",
+					"-lxmp",
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ast.gloomcollection;
+				PRODUCT_NAME = zgloom;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = "/opt/homebrew/include/SDL2 /usr/local/include/SDL2 $(inherited)";
+				TARGET_TEMP_DIR = "$(SRCROOT)/build-xcode/build/zgloom.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		C575F89FBD3549B1BC05EB52 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					x86_64,
+					arm64,
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = "$(SRCROOT)/build-xcode/build";
+			};
+			name = MinSizeRel;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3C60728F7A1846B69BE46812 /* Build configuration list for PBXNativeTarget "ZGloom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29C8029D0DB4447890732FCB /* Debug */,
+				C3A1BA020A0346A9B9977E4F /* Release */,
+				92C52E8A6F05420989DF3A83 /* MinSizeRel */,
+				338F7521D89E4829AF4B7D2C /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8162FE5EF1394B718FB3144E /* Build configuration list for PBXProject "ZGloom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				412CEF4502734D9ABEA2A915 /* Debug */,
+				49685526D1444A7C9B86CA15 /* Release */,
+				C575F89FBD3549B1BC05EB52 /* MinSizeRel */,
+				7D00DB6ED9A74A7DAB292DC3 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E6BD786772034C56B4817026 /* Project object */;
+}

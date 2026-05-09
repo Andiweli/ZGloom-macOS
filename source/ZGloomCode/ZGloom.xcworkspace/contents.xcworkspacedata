@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:ZGloom.xcodeproj">
+      location = "container:build-xcode/zgloom.xcodeproj">
    </FileRef>
 </Workspace>

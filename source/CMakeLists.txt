@@ -47,17 +47,17 @@ if (WITH_SDL2_MIXER)
 endif()
 
 # If xmp sources/headers are vendored under xmp/include add them
-if (WITH_XMP AND EXISTS "${CMAKE_SOURCE_DIR}/xmp/include")
-    set(XMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/xmp/include")
+if (WITH_XMP AND EXISTS "${CMAKE_SOURCE_DIR}/ZGloomCode/xmp/include")
+    set(XMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/ZGloomCode/xmp/include")
 endif()
 
 # Collect sources (recursive)
 file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS
-    "${CMAKE_SOURCE_DIR}/*.cpp"
+    "${CMAKE_SOURCE_DIR}/ZGloomCode/*.cpp"
 )
 
 if (PROJECT_SOURCES STREQUAL "")
-    message(FATAL_ERROR "No .cpp sources found in project root.")
+    message(FATAL_ERROR "No .cpp sources found under ZGloomCode/.")
 endif()
 
 add_executable(zgloom ${PROJECT_SOURCES})
@@ -112,7 +112,7 @@ if(APPLE)
 endif()
 
 # Project headers in repo root
-target_include_directories(zgloom PRIVATE ${CMAKE_SOURCE_DIR})
+target_include_directories(zgloom PRIVATE "${CMAKE_SOURCE_DIR}/ZGloomCode")
 
 # Compiler flags
 if (MSVC)

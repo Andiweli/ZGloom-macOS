@@ -1,0 +1,10 @@
+prefix=/Users/andreas.stuermer/Documents/Xcode Projekte/ZGloom/Frameworks/Universal
+exec_prefix=${prefix}
+libdir=${prefix}
+includedir=/opt/homebrew/include
+
+Name: libxmp
+Description: libxmp universal override for ZGloom
+Version: 4
+Libs: -L${libdir} -lxmp
+Cflags: -I${includedir}
