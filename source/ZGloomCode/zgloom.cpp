@@ -121,20 +121,34 @@ static void fill_audio(void *udata, Uint8 *stream, int len)
 	auto res = xmp_play_buffer((xmp_context)udata, stream, len, 0);
 }
 
-void LoadPic(std::string name, SDL_Surface* render8)
+static bool DecodePicFile(const std::string& name, std::vector<uint8_t>& pic, uint32_t& width)
 {
-	std::vector<uint8_t> pic;
 	CrmFile picfile;
+	if (!picfile.Load(name.c_str()) || !picfile.data || picfile.size < 12)
+	{
+		return false;
+	}
+
+	IffHandler::DecodeIff(picfile.data, pic, width);
+	return (width > 0) && !pic.empty();
+}
+
+static void ApplyPicPalette(const std::string& name, SDL_Surface* render8)
+{
+	if (!render8 || !render8->format || !render8->format->palette)
+	{
+		return;
+	}
+
 	CrmFile palfile;
+	if (!palfile.Load((name + ".pal").c_str()) || !palfile.data)
+	{
+		return;
+	}
 
-	picfile.Load(name.c_str());
-	palfile.Load((name+".pal").c_str());
-
-	SDL_FillRect(render8, nullptr, 0);
-
-	// is this some sort of weird AGA/ECS backwards compatible palette encoding? 4 MSBs, then LSBs?
-	// Update: Yes, yes it is. 
-	for (uint32_t c = 0; c < palfile.size / 4; c++)
+	// Gloom palette format: first Amiga 12-bit RGB nibble set, then low nibbles for SDL colours.
+	const uint32_t numColours = std::min<uint32_t>(256, palfile.size / 4);
+	for (uint32_t c = 0; c < numColours; c++)
 	{
 		SDL_Color col;
 		col.a = 0xFF;
@@ -152,39 +166,66 @@ void LoadPic(std::string name, SDL_Surface* render8)
 
 		SDL_SetPaletteColors(render8->format->palette, &col, c, 1);
 	}
+}
 
+bool LoadPic(std::string name, SDL_Surface* render8)
+{
+	if (!render8)
+	{
+		return false;
+	}
+
+	std::vector<uint8_t> pic;
 	uint32_t width = 0;
-
-	IffHandler::DecodeIff(picfile.data, pic, width);
-
-	if (width == render8->w)
+	if (!DecodePicFile(name, pic, width))
 	{
-		if (pic.size() > (size_t)(render8->w * render8->h))
-		{
-			pic.resize(render8->w * render8->h);
-		}
-		std::copy(pic.begin(), pic.begin() + pic.size(), (uint8_t*)(render8->pixels));
+		SDL_FillRect(render8, nullptr, 0);
+		return false;
 	}
-	else
+
+	ApplyPicPalette(name, render8);
+	SDL_FillRect(render8, nullptr, 0);
+
+	const uint32_t height = width ? (uint32_t)(pic.size() / width) : 0;
+	const uint32_t copyW = std::min<uint32_t>(width, (uint32_t)render8->w);
+	const uint32_t copyH = std::min<uint32_t>(height, (uint32_t)render8->h);
+
+	for (uint32_t y = 0; y < copyH; y++)
 	{
-		// gloom 3 has some odd-sized intermission pictures. Do a line-by-line copy.
-
-		uint32_t p = 0;
-		uint32_t y = 0;
-
-		if (pic.size() > (width * render8->h))
-		{
-			pic.resize(width * render8->h);
-		}
-
-		while (p < pic.size())
-		{
-			std::copy(pic.begin() + p, pic.begin() + p + render8->w, (uint8_t*)(render8->pixels) + y*render8->pitch);
-
-			p += width;
-			y++;
-		}
+		const uint8_t* src = pic.data() + y * width;
+		uint8_t* dst = (uint8_t*)render8->pixels + y * render8->pitch;
+		std::copy(src, src + copyW, dst);
 	}
+
+	return true;
+}
+
+static bool OverlayPicAt(const std::string& name, SDL_Surface* render8, int dstY)
+{
+	if (!render8 || dstY >= render8->h)
+	{
+		return false;
+	}
+
+	std::vector<uint8_t> pic;
+	uint32_t width = 0;
+	if (!DecodePicFile(name, pic, width))
+	{
+		return false;
+	}
+
+	const uint32_t height = width ? (uint32_t)(pic.size() / width) : 0;
+	const uint32_t copyW = std::min<uint32_t>(width, (uint32_t)render8->w);
+	const uint32_t copyH = std::min<uint32_t>(height, (uint32_t)std::max(0, render8->h - dstY));
+
+	for (uint32_t y = 0; y < copyH; y++)
+	{
+		const uint8_t* src = pic.data() + y * width;
+		uint8_t* dst = (uint8_t*)render8->pixels + (dstY + y) * render8->pitch;
+		std::copy(src, src + copyW, dst);
+	}
+
+	return true;
 }
 
 enum GameState
@@ -194,6 +235,7 @@ enum GameState
 	STATE_SPOOLING,
 	STATE_WAITING,
 	STATE_MENU,
+	STATE_SPLASH,
 	STATE_TITLE
 };
 
@@ -857,7 +899,6 @@ int main(int argc, char* argv[])
 	CrmFile titlemusic;
 	CrmFile intermissionmusic;
 	CrmFile ingamemusic;
-	CrmFile titlepic;
 
 	titlemusic.Load(Config::GetMusicFilename(0).c_str());
 	intermissionmusic.Load(Config::GetMusicFilename(1).c_str());
@@ -901,6 +942,8 @@ int main(int argc, char* argv[])
 	SDL_Surface* render8 = SDL_CreateRGBSurface(0, 320, 256, 8, 0, 0, 0, 0);
 	SDL_Surface* intermissionscreen = SDL_CreateRGBSurface(0, 320, 256, 8, 0, 0, 0, 0);
 	SDL_Surface* titlebitmap = SDL_CreateRGBSurface(0, 320, 256, 8, 0, 0, 0, 0);
+	SDL_Surface* titlemenubitmap = SDL_CreateRGBSurface(0, 320, 256, 8, 0, 0, 0, 0);
+	SDL_Surface* splashbitmap = SDL_CreateRGBSurface(0, 320, 256, 8, 0, 0, 0, 0);
 	SDL_Surface* render32 = SDL_CreateRGBSurface(0, renderwidth, renderheight, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
 	SDL_Surface* screen32 = SDL_CreateRGBSurface(0, 320, 256, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
 
@@ -938,16 +981,43 @@ int main(int argc, char* argv[])
 	}
 #endif
 
-	titlepic.Load((Config::GetPicsDir() + "title").c_str());
-
-	if (titlepic.data)
+	// Original-style Gloom front-end flow:
+	// 1) show pics/blackmagic as a short splash before the title menu,
+	// 2) keep pics/title clean for About and fallback screens,
+	// 3) build a separate title-menu bitmap where pics/gloom is overlaid at the bottom.
+	const bool haveSplash = LoadPic(Config::GetPicsDir() + "blackmagic", splashbitmap);
+	const bool haveTitle = LoadPic(Config::GetPicsDir() + "title", titlebitmap);
+	if (haveTitle)
 	{
-		LoadPic(Config::GetPicsDir() + "title", titlebitmap);
+		SDL_SetPaletteColors(titlemenubitmap->format->palette, titlebitmap->format->palette->colors, 0, 256);
+		SDL_BlitSurface(titlebitmap, nullptr, titlemenubitmap, nullptr);
+
+		// Retail game data uses pics/gloom for the logo overlay.
+		// Keep a fallback for older/private data sets which used pics/gloombrush.
+		if (!OverlayPicAt(Config::GetPicsDir() + "gloom", titlemenubitmap, 168))
+		{
+			OverlayPicAt(Config::GetPicsDir() + "gloombrush", titlemenubitmap, 168);
+		}
+	}
+	else if (haveSplash)
+	{
+		SDL_SetPaletteColors(titlebitmap->format->palette, splashbitmap->format->palette->colors, 0, 256);
+		SDL_BlitSurface(splashbitmap, nullptr, titlebitmap, nullptr);
+		SDL_SetPaletteColors(titlemenubitmap->format->palette, splashbitmap->format->palette->colors, 0, 256);
+		SDL_BlitSurface(splashbitmap, nullptr, titlemenubitmap, nullptr);
 	}
 	else
 	{
-		LoadPic(Config::GetPicsDir() + "blackmagic", titlebitmap);
+		SDL_FillRect(titlebitmap, nullptr, 0);
+		SDL_FillRect(titlemenubitmap, nullptr, 0);
 	}
+
+	if (haveSplash && haveTitle)
+	{
+		state = STATE_SPLASH;
+	}
+	uint32_t splashStartTicks = SDL_GetTicks();
+	const uint32_t splashDurationMs = 1200;
 
 	if (titlemusic.data)
 	{
@@ -1218,10 +1288,20 @@ if (state == STATE_PARSING)
 			}
 		}
 
-		if (state == STATE_TITLE)
+		if (state == STATE_SPLASH)
 		{
-			SDL_SetPaletteColors(render8->format->palette, titlebitmap->format->palette->colors, 0, 256);
-			titlescreen.Render(titlebitmap, render8, smallfont);
+			SDL_SetPaletteColors(render8->format->palette, splashbitmap->format->palette->colors, 0, 256);
+			SDL_BlitSurface(splashbitmap, nullptr, render8, nullptr);
+			if (SDL_GetTicks() - splashStartTicks >= splashDurationMs)
+			{
+				state = STATE_TITLE;
+			}
+		}
+		else if (state == STATE_TITLE)
+		{
+			SDL_Surface* titleSource = titlescreen.WantsPlainTitleBackground() ? titlebitmap : titlemenubitmap;
+			SDL_SetPaletteColors(render8->format->palette, titleSource->format->palette->colors, 0, 256);
+			titlescreen.Render(titleSource, render8, smallfont);
 		}
 
 		while ((state!= STATE_SPOOLING) && SDL_PollEvent(&sEvent))
@@ -1237,7 +1317,7 @@ if (state == STATE_PARSING)
 			if (Config::HaveController() && (sEvent.type == SDL_CONTROLLERBUTTONDOWN))
 			{
 				//fake up a key event
-				if ((state == STATE_TITLE) || (state == STATE_MENU) || (state == STATE_WAITING))
+				if ((state == STATE_SPLASH) || (state == STATE_TITLE) || (state == STATE_MENU) || (state == STATE_WAITING))
 				{
 					if (Config::GetControllerFire())
 					{
@@ -1271,6 +1351,15 @@ if (state == STATE_PARSING)
 					}
 				}
 
+			}
+
+			if (state == STATE_SPLASH)
+			{
+				if ((sEvent.type == SDL_KEYDOWN) || (sEvent.type == SDL_MOUSEBUTTONDOWN) || (sEvent.type == SDL_CONTROLLERBUTTONDOWN))
+				{
+					state = STATE_TITLE;
+				}
+				continue;
 			}
 
 			if ((sEvent.type == SDL_KEYDOWN) && (sEvent.key.keysym.sym == SDLK_SPACE ||
@@ -1467,7 +1556,7 @@ if (state == STATE_PARSING)
 			menuscreen.Render(render32, render32, smallfont);
 		}
 		
-		if ((state == STATE_WAITING) || (state == STATE_TITLE))
+		if ((state == STATE_WAITING) || (state == STATE_SPLASH) || (state == STATE_TITLE))
 		{
 			// Titel- und Intermission-Bilder: 320x256 -> Wide mit seitlichem Stretch + Vignette (aus Vita-Port)
 			// Erst 8-bit Render nach screen32 kopieren (Palette -> 32-bit).
@@ -1535,6 +1624,8 @@ if (state == STATE_PARSING)
 	SDL_FreeSurface(screen32);
 	SDL_FreeSurface(intermissionscreen);
 	SDL_FreeSurface(titlebitmap);
+	SDL_FreeSurface(titlemenubitmap);
+	SDL_FreeSurface(splashbitmap);
 	SDL_DestroyRenderer(ren);
 	SDL_DestroyWindow(win);
 	SDL_Quit();

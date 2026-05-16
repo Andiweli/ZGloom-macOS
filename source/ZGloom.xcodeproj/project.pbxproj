@@ -232,6 +232,7 @@
 		};
 /* End PBXProject section */
 
+
 /* Begin PBXSourcesBuildPhase section */
 		02D9CCB8EA464047963E90A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -307,9 +308,9 @@
 				INSTALL_PATH = "";
 				LD_NO_PIE = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Frameworks/Universal",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
+					"$(PROJECT_DIR)/Frameworks/Universal",
 					"$(inherited)",
 				);
 				LIBRARY_SEARCH_PATHS = (
@@ -377,9 +378,9 @@
 				INSTALL_PATH = "";
 				LD_NO_PIE = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Frameworks/Universal",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
+					"$(PROJECT_DIR)/Frameworks/Universal",
 					"$(inherited)",
 				);
 				LIBRARY_SEARCH_PATHS = (
@@ -489,9 +490,9 @@
 				INSTALL_PATH = "";
 				LD_NO_PIE = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Frameworks/Universal",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
+					"$(PROJECT_DIR)/Frameworks/Universal",
 					"$(inherited)",
 				);
 				LIBRARY_SEARCH_PATHS = (
@@ -560,9 +561,9 @@
 				INSTALL_PATH = "";
 				LD_NO_PIE = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Frameworks/Universal",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
+					"$(PROJECT_DIR)/Frameworks/Universal",
 					"$(inherited)",
 				);
 				LIBRARY_SEARCH_PATHS = (

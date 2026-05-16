@@ -62,6 +62,15 @@ endif()
 
 add_executable(zgloom ${PROJECT_SOURCES})
 
+# ZGloom macOS app-friendly RPATH order.
+# Prefer dylibs inside ZGloom.app/Contents/Frameworks before any project-local fallback.
+if(APPLE)
+    set_target_properties(zgloom PROPERTIES
+        BUILD_RPATH "@executable_path/../Frameworks;@loader_path/../Frameworks;${CMAKE_SOURCE_DIR}/Frameworks/Universal"
+        INSTALL_RPATH "@executable_path/../Frameworks;@loader_path/../Frameworks"
+    )
+endif()
+
 # Include directories
 # If SDL2 was found as CMake target, use the target's include dirs when linking.
 if (TARGET SDL2::SDL2)
@@ -138,3 +147,9 @@ endif()
 if (DEFINED XMP_INCLUDE_DIR)
     message(STATUS "Using xmp includes at: ${XMP_INCLUDE_DIR}")
 endif()
+
+# macOS app bundle copying is intentionally not a target POST_BUILD step.
+# The Xcode scheme ZGloom_Release_BuildAndCopy runs the copy after the final
+# Release product is complete, which avoids copying an early/stale binary during
+# universal builds. For manual use run scripts/package_macos_app_bundle.sh.
+
